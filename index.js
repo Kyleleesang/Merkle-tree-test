@@ -11,6 +11,8 @@
  *                      the README for more info.
  *
  */
+
+const {MerkleTree} = require ('')
  function fromArray(args, cb) {
     
     var array;
@@ -28,23 +30,16 @@
         } else {
             hashalgo = args.hashalgo;
         }
-
-        if (!args.hashlist) {
-            hashlist = false;       // Assume the elements aren't hashes
-        } else {
-            hashlist = args.hashlist;
-        }
-
         // Import dependencies
-        var HashArray = require('./lib/hash-array');
-        var genMerkle = require('./lib/merkle-gen');
+        var HashArray = require('./lib/Hasher');
+        var Merklegenerator = require('./lib/MerkleTree');
 
         var arrayHasher = new HashArray(hashalgo, hashlist);
 
         arrayHasher.hashElements(array, function (fastMap) {
             
             // Generate a Merkle Tree from the leaves
-            genMerkle(fastMap, hashalgo, function (tree) {
+            Merklegenerator(fastMap, hashalgo, function (tree) {
                 cb(null, tree);
             });
         });

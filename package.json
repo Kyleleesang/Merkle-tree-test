@@ -31,6 +31,7 @@
   "dependencies": {
     "chunking-streams": "0.0.8",
     "collections": "^3.0.0",
-    "hasha": "^2.2.0"
+    "hasha": "^2.2.0",
+    "merkletreejs": "^0.2.32"
   }
 }
